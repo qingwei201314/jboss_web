@@ -1,0 +1,52 @@
+<meta property="wb:webmaster" content="a6d43b7fbbe9a68c" />
+<meta property="qc:admins" content="057124434762764345416375" />
+<#assign BasePath ="${Application.applicationBasePath}">
+<#assign basepath ="${Application.applicationBasePath}/style_kocla/">
+
+<#-- 1.邦德学网考试页面的LOGO -->
+<#assign examLogoImg = "${basepath}common/img/bd_header/bd_logo.png" />
+
+<#-- 1.考拉开放平台考试页面的LOGO -->
+<#--
+<#assign examLogoImg = "${basepath}common/img/bd_header/logo.png" />
+-->
+
+<link rel="stylesheet" type="text/css" href="${basepath}common/css/base.css"/>
+<link rel="stylesheet" type="text/css" href="${basepath}common/css/jquery.datepickedr.css"/>
+<link rel="stylesheet" type="text/css" href="${basepath}common/css/jquery.zoomimage.css"/>
+<link rel="stylesheet" type="text/css" href="${basepath}common/css/layout.css" />
+<link rel="stylesheet" type="text/css" href="${basepath}common/css/main.css" />
+<link rel="stylesheet" type="text/css" href="${basepath}common/css/main2.css" />
+<link rel="stylesheet" type="text/css" href="${basepath}common/css/common.css"/>
+<link rel="stylesheet" type="text/css" href="${basepath}common/css/home.css"/>
+<link rel="stylesheet" type="text/css" href="${basepath}common/css/main_menu.css"  />
+<link rel="stylesheet" type="text/css" href="${basepath}common/css/page.css"  />
+<link rel="stylesheet" type="text/css" href="${basepath}common/css/alert_box.css"/>
+<link rel="stylesheet" type="text/css" href="${basepath}common/css/forms.css"/>
+<link rel="stylesheet" type="text/css" href="${basepath}common/css/overlay.css"/>
+<link rel="stylesheet" type="text/css" href="${basepath}common/css/bd_main_header.css"/>
+
+<script type="text/javascript" src="${basepath}common/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="${basepath}common/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="${basepath}common/js/jquery.json-2.3.min.js"></script>
+<script type="text/javascript" src="${basepath}common/js/common-page.js" ></script>
+<script type="text/javascript" src="${basepath}common/js/jquery.plugins.js"></script>
+<script type="text/javascript" src="${basepath}common/js/jquery.jqModal.js"></script>
+<script type="text/javascript" src="${basepath}common/js/jquery.jqDnR.js"></script>
+<script type="text/javascript" src="${basepath}common/js/jquery.imagePreview.1.0.js"></script>
+<script type="text/javascript" src="${basepath}common/js/jquery.bgiframe.js"></script>
+<script type="text/javascript" src="${basepath}common/js/common.js"></script>
+<script type="text/javascript" src="${basepath}common/js/message.js"></script>
+<script type="text/javascript" src="${basepath}common/js/overlay.js"></script>
+<!-- JS公共变量 -->
+<script type="text/javascript" >
+	var BasePath = '${BasePath}';
+	var basePath = '${BasePath}';
+	var IMAGESPATH = '${basepath}zdialog/images/'; //此路径变量在zDialog.js里加载图片时用到
+	var ImgUrl = '${(systemConfig.uploadImageUrl)!''}'; //此路径变量在zDialog.js里加载图片时用到
+	var ImgPath = '${(systemConfig.staticServer)!''}'; //此路径变量在zDialog.js里加载图片时用到
+	$(document).ready(function(){
+	});
+	
+</script>
+<link rel="shortcut icon" href="${BasePath}/favicon.ico" />
