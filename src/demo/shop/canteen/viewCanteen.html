@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../../css/bootstrap/bootstrap.css" rel="stylesheet">
+<link href="../../css/shop/shop.css" rel="stylesheet">
+<script src="../../js/jquery-1.8.3.min.js"></script>
+<title>水壶列表</title>
+</head>
+<body style="padding-top: 60px;">
+	<div class="topbar">
+		<div class="fill">
+			<div class="container">
+				<a class="brand" href="../shopIndex.html">绍兴五金厂</a>
+				<ul class="nav">
+					<li class="active"><a href="listDepot.html">水壶</a></li>
+					<li><a href="../purchase/listPurchase.html">茶盘</a></li>
+					<li><a href="../produce/addProduce.html">餐盘</a></li>
+					<li><a href="../bom/listBom.html">脸盆</a></li>
+					<li><a href="../supplier/listSupplier.html">不绣钢锅</a></li>
+				</ul>
+				<div style="float: right; width: 232px; margin-top: 6px;">
+					<input type="text" name="q" style="line-height: 19px;"> <input
+						type="submit" id="fdj" title="搜索" value="">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="hero-unit">
+			<h1>吉祥水壶</h1>
+			<p style="margin-top: 10px;">产品名称：吉祥水壶 电水壶加热速度: 4-6分钟 电热水壶最大功率:
+				1500W-2000W 电热水壶容积: 1-2升 电热水壶材质: 不锈钢 电热水壶类型: 电热水壶 保温功能: 无 安全功能: 自动断电
+				电热水壶售后服务: 全国联保 颜色分类: 黑色 电热水壶品牌: Supor/苏泊尔 型号: SWF17K2-180 刻度标示: 内壁标示
+				电水壶加热方式: 底盘加热 价格区间: 100-199元</p>
+		</div>
+
+		<!-- 显示详细图片 -->
+		<div class="img_detail">
+			<dd>
+				<h4>12.幸福水壶</h4>
+				<img id="opener" class="product_detail" src="../../img/shaoxing/canteen/8.jpg">
+			</dd>
+			<dd>
+				<h4>13.幸福水壶</h4>
+				<img class="product_detail" src="../../img/shaoxing/canteen/8.jpg">
+			</dd>
+			<dd>
+				<h4>14.幸福水壶</h4>
+				<img class="product_detail" src="../../img/shaoxing/canteen/8.jpg">
+			</dd>
+		</div>
+
+		<!-- 加载更多信息 -->
+		<div class="alert-message block-message success"
+			style="margin-top: 28px; width: 400px; margin-left: auto; margin-right: auto;">
+			<p style="text-align: center;">数据加载中</p>
+		</div>
+
+		<footer>
+		<p>&copy; 绍兴五金厂 2013</p>
+		</footer>
+	</div>
+	<script type="text/javascript">
+		$("#opener").click(
+			function (){
+				$("body").addClass("backgroud_gray");
+				window.showModalDialog("viewPhoto.html","", "dialogWidth:820px;dialogHeight:620px;status:no;");
+				$("body").removeClass("backgroud_gray");
+			}
+		);
+	</script>
+</body>
+</html>
