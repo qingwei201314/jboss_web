@@ -16,7 +16,7 @@ public class Shop {
 	private String name;
 	private String contact;
 	private String address;
-	private String district;
+	private String district = "445121";
 	private String gate_url;
 	private String descript;
 	

@@ -8,6 +8,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 <body>
-首页啊首页
+	<h:form>
+		名称:<h:inputText value="#{shoController.shop.name}" />
+		联系人:<h:inputText value="#{shopController.shop.contact}" />
+		地址:<h:inputText value="#{shopController.shop.address}" />
+		区划:<h:inputText value="#{shopController.shop.district}" />
+		<h:commandButton action="#{shopController.saveShop}" value="保存" />
+	</h:form>
 </body>
 </html>

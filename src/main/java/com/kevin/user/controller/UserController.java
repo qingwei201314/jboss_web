@@ -1,9 +1,8 @@
 package com.kevin.user.controller;
 
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
-
-import org.jboss.arquillian.core.api.annotation.Inject;
 
 import com.kevin.dao.UserDao;
 import com.kevin.entity.User;
@@ -12,12 +11,14 @@ import com.kevin.entity.User;
 @RequestScoped
 public class UserController {
 	@Inject
-	private UserDao userDao;
+    private UserDao userDao;
+    
+    @RequestScoped
 	private User user = new User();
 
 	public String saveUser(){
 		userDao.createUser(user);
-		return "";
+		return "/shop/addShop";
 	}
 	
 	public User getUser() {
