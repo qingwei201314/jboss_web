@@ -1,14 +1,13 @@
 package com.kevin.entity;
 
-import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
 import org.hibernate.annotations.GenericGenerator;
 
+@Entity(name="product")
 public class Product {
 	@Id
-	@Column
 	@GenericGenerator(name = "generator", strategy = "uuid.hex")
 	@GeneratedValue(generator = "generator")	
 	private String id;
