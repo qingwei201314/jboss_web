@@ -1,11 +1,13 @@
 package com.kevin.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import org.hibernate.annotations.GenericGenerator;
 
+@Entity(name="shop")
 public class Shop {
 	@Id
 	@Column
@@ -16,7 +18,7 @@ public class Shop {
 	private String name;
 	private String contact;
 	private String address;
-	private String district;
+	private String district = "445121";
 	private String gate_url;
 	private String descript;
 	
