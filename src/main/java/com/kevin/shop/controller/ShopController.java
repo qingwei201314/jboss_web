@@ -1,22 +1,21 @@
-package com.kevin.shop;
+package com.kevin.shop.controller;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.EntityManager;
 
+import com.kevin.dao.ShopDao;
 import com.kevin.entity.Shop;
 
 @Named
 @RequestScoped
 public class ShopController {
 	@Inject
-    private EntityManager entityManager;
-	
+    private ShopDao shopDao;
 	private Shop shop = new Shop();
 	
 	public String saveShop(){
-		
+		shopDao.save(shop);
 		return null;
 	}
 

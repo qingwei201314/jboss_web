@@ -1,11 +1,13 @@
 package com.kevin.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import org.hibernate.annotations.GenericGenerator;
 
+@Entity(name="shop")
 public class Shop {
 	@Id
 	@Column

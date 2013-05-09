@@ -9,9 +9,12 @@
 </head>
 <body>
 	<h:form>
-		名称:<h:inputText value="#{shoController.shop.name}" />
+		名称:<h:inputText value="#{shopController.shop.name}" />
 		联系人:<h:inputText value="#{shopController.shop.contact}" />
 		地址:<h:inputText value="#{shopController.shop.address}" />
+		描述:<h:inputText value="#{shopController.shop.descript}" />
+		gate_url:<h:inputText value="#{shopController.shop.gate_url}" />
+		gate_url:<h:inputText value="#{shopController.shop.user_id}" />
 		区划:<h:inputText value="#{shopController.shop.district}" />
 		<h:commandButton action="#{shopController.saveShop}" value="保存" />
 	</h:form>
