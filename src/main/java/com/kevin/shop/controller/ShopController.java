@@ -16,7 +16,7 @@ public class ShopController {
 	
 	public String saveShop(){
 		shopDao.save(shop);
-		return null;
+		return "/category/addCategory";
 	}
 
 	public Shop getShop() {

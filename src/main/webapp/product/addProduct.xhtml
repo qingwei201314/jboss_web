@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+<title>Java EE 6 Starter Application</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+	<h:form>
+		名称:<h:inputText value="#{productController.product.name}" />
+		描述:<h:inputText value="#{productController.product.description}" />
+		商店:<h:inputText value="#{productController.product.shop_id}" />
+		类别ID:<h:inputText value="#{productController.product.category_id}" />
+		<h:commandButton action="#{productController.saveProduct}" value="保存" />
+	</h:form>
+</body>
+</html>

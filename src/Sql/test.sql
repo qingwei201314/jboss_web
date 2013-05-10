@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50524
 File Encoding         : 65001
 
-Date: 2013-05-09 19:57:23
+Date: 2013-05-10 20:14:53
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -28,6 +28,9 @@ CREATE TABLE `category` (
 -- ----------------------------
 -- Records of category
 -- ----------------------------
+INSERT INTO `category` VALUES ('4028d8473e8e4f41013e8e5108010002', 'sdf');
+INSERT INTO `category` VALUES ('4028d8473e8e4f41013e8e5a7e200003', 'sdf');
+INSERT INTO `category` VALUES ('4028d8473e8e5c2a013e8e5cc7730002', 'asdf');
 
 -- ----------------------------
 -- Table structure for `image`
@@ -60,6 +63,7 @@ CREATE TABLE `product` (
 -- ----------------------------
 -- Records of product
 -- ----------------------------
+INSERT INTO `product` VALUES ('4028d8473e8e5c2a013e8e5cda010003', 'sd', 'asdf', 'asdf', 'asdf');
 
 -- ----------------------------
 -- Table structure for `shop`
@@ -81,6 +85,10 @@ CREATE TABLE `shop` (
 -- Records of shop
 -- ----------------------------
 INSERT INTO `shop` VALUES ('4028d8473e891d43013e8926426d000e', '4028d8473e3be3c0013e3beac2760001', 'sdf', 'sdf', 'sdf', '445121', 'sdf', 'sdf');
+INSERT INTO `shop` VALUES ('4028d8473e8e3b6f013e8e3c10e10001', 'sdf', 'sdf', 'sdf', 'sdf', '445121', 'sdf', 'sdf');
+INSERT INTO `shop` VALUES ('4028d8473e8e3b6f013e8e4c55db0002', 'sdf', 'sdf', 'sdf', 'sdf', '445121', 'sdf', 'sdf');
+INSERT INTO `shop` VALUES ('4028d8473e8e4f41013e8e5049b20001', 'sdf', 'er', 'sdf', 'sdf', '445121', 'sdf', 'sdf');
+INSERT INTO `shop` VALUES ('4028d8473e8e5c2a013e8e5cc0010001', 'fasdf', 'asdf', 'asdf', 'asdfasd', '445121', 'asdfasd', 'fasdf');
 
 -- ----------------------------
 -- Table structure for `user`
@@ -133,3 +141,6 @@ INSERT INTO `user` VALUES ('4028d8473e891d43013e89232a8f0007', 'sdf', 'sdf');
 INSERT INTO `user` VALUES ('4028d8473e891d43013e892395100009', 'df', 'sfg');
 INSERT INTO `user` VALUES ('4028d8473e891d43013e8924ebb7000b', 'asdf', 'df');
 INSERT INTO `user` VALUES ('4028d8473e891d43013e892601ca000d', 'f', 'f');
+INSERT INTO `user` VALUES ('4028d8473e8e3b6f013e8e3bf76d0000', 'dfadf', 'adsf');
+INSERT INTO `user` VALUES ('4028d8473e8e4f41013e8e5031680000', 'asdf', 'asdf');
+INSERT INTO `user` VALUES ('4028d8473e8e5c2a013e8e5caebb0000', 'asdf', 'asdf');
