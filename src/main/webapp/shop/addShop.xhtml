@@ -4,19 +4,87 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <head>
-<title>Java EE 6 Starter Application</title>
+<title>填写商店信息</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="#{util.path}/css/bootstrap/bootstrap.css" rel="stylesheet" />
+<style type="text/css">
+.label_width {
+	width: 340px;
+}
+
+.div_margin {
+	margin-left: 360px;
+}
+</style>
 </head>
-<body>
-	<h:form>
-		名称:<h:inputText value="#{shopController.shop.name}" />
-		联系人:<h:inputText value="#{shopController.shop.contact}" />
-		地址:<h:inputText value="#{shopController.shop.address}" />
-		描述:<h:inputText value="#{shopController.shop.descript}" />
-		gate_url:<h:inputText value="#{shopController.shop.gate_url}" />
-		gate_url:<h:inputText value="#{shopController.shop.user_id}" />
-		区划:<h:inputText value="#{shopController.shop.district}" />
-		<h:commandButton action="#{shopController.saveShop}" value="保存" />
-	</h:form>
+<body style="padding-top: 60px;">
+	<div class="topbar">
+		<div class="fill">
+			<div class="container">
+				<a class="brand" href="#">填写具体信息</a>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<h:form>
+			<fieldset>
+				<div class="clearfix">
+					<label for="xlInput" class="label_width">名称</label>
+					<div class="div_margin">
+						<h:inputText value="#{shopController.shop.name}" size="30"
+							class="xlarge" />
+					</div>
+				</div>
+				<div class="clearfix">
+					<label for="xlInput" class="label_width">联系人</label>
+					<div class="div_margin ">
+						<h:inputText value="#{shopController.shop.contact}" size="30"
+							class="xlarge" />
+					</div>
+				</div>
+				<div class="clearfix">
+					<label for="xlInput" class="label_width">地址</label>
+					<div class="div_margin ">
+						<h:inputText value="#{shopController.shop.address}" size="30"
+							class="xlarge" style="width:530px;" />
+					</div>
+				</div>
+				<div class="clearfix">
+					<label for="xlInput" class="label_width">描述</label>
+					<div class="div_margin ">
+						<h:inputTextarea value="#{shopController.shop.descript}" class="xxlarge" rows="3" />
+					</div>
+				</div>
+				<div class="clearfix">
+					<label for="xlInput" class="label_width">gate_url</label>
+					<div class="div_margin ">
+						<h:inputText value="#{shopController.shop.gate_url}" size="30"
+							class="xlarge" />
+					</div>
+				</div>
+				<div class="clearfix">
+					<label for="xlInput" class="label_width">user_id</label>
+					<div class="div_margin ">
+						<h:inputText value="#{shopController.shop.user_id}#{userController.phoneSession}" size="30"
+							class="xlarge" />
+					</div>
+				</div>
+				<div class="clearfix">
+					<label for="xlInput" class="label_width">区划</label>
+					<div class="div_margin ">
+						<h:inputText value="#{shopController.shop.district}" size="30"
+							class="xlarge" />
+					</div>
+				</div>
+				<div class="actions" style="padding-left: 360px;">
+					<h:commandButton class="btn primary"
+						action="#{shopController.saveShop}" value="保存" />
+				</div>
+			</fieldset>
+		</h:form>
+		<footer>
+		<p>&copy; 深圳市凯文信息有限公司 2013</p>
+		</footer>
+	</div>
 </body>
 </html>

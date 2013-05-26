@@ -4,10 +4,20 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <head>
-<title>Java EE 6 Starter Application</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link href="#{util.path}/css/main.css" rel="stylesheet" type="text/css" />
+	<title>首页</title>
 </head>
 <body>
-首页啊首页
+	<div class="logo_div">
+		<a href="#{util.path}/user/registerUser.jsf"><img src="img/logo.png" style="border:0;" /></a>
+	</div>
+	<div>
+		<div class="search_div">
+			<input type="text" class="search_div_input" /> <input type="button"
+				class="search_div_button"
+				onclick="window.location='shop/shopIndex.html'" />
+		</div>
+	</div>
 </body>
 </html>

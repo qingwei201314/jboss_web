@@ -1,0 +1,117 @@
+#search_product {
+	background-color: #CCCCCC;
+	margin-top: 6px;
+	border-radius: 13px 13px 13px 13px;
+	position: absolute;
+	z-index: 2;
+	right: 0;
+}
+
+.fdj_span {
+	display: block;
+	z-index: 3;
+	right: 0;
+}
+
+#fdj {
+	background-image: url(../../img/shop/fdj.png);
+	background-repeat: no-repeat;
+	background-color: transparent;
+	border: 0;
+	cursor: pointer;
+	height: 15px;
+	margin-left: -29px;
+	margin-top:6px;
+	box-shadow: 0 0px 0px rgba(0, 0, 0, 0) inset, 0 0px 0
+		rgba(255, 255, 255, 0.25);
+}
+
+.index_home {
+	margin-bottom: 30px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	height: 290px;
+}
+
+.left_div {
+	float: left;
+	width: 580px;
+	height: 290px;
+}
+
+.right_div {
+	float: right;
+	width: 359px;
+	height: 290px;
+	background-color: #f5f5f5;
+}
+
+.right_div dl {
+	padding: 15px;
+}
+
+.right_div dt {
+	text-align: center;
+	margin-top: 3px;
+}
+
+.gate_right {
+	margin-bottom: 10px;
+}
+
+.gate_right td {
+	border-top: 0;
+	font-size: 18px;
+	font-weight: 200;
+	padding: 0 0 10px 0;
+}
+
+.gate_right_td_left {
+	width: 72px;
+	text-align: right;
+}
+
+.gate_img {
+	width: 580px;
+	height: 290px;
+}
+
+.product {
+	width: 220px;
+	height: 165px;
+}
+
+.product_detail {
+	width: 400px;
+	height: 300px;
+	cursor: pointer;
+}
+
+.span-one-third p {
+	text-align: center;
+}
+
+.span-one-third h4 {
+	text-align: center;
+}
+
+.img_detail {
+	width: 400px;
+	margin: auto;
+}
+
+.img_detail dd {
+	margin-bottom: 15px;
+}
+
+.img_detail dd>h4 {
+	text-align: center;
+}
+
+.backgroud_gray {
+	background-color: #999999;
+	filter: Alpha(Opacity = 40);
+	opacity: .4;
+	z-index: 10000;
+}

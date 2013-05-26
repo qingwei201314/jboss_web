@@ -6,11 +6,6 @@ import javax.persistence.EntityManager;
 import com.kevin.entity.User;
 
 @Stateless
-public class UserDao {
-	@Inject
-    private EntityManager entityManager;
+public class UserDao extends CommonDao<User>{
     
-    public void createUser(User user) {
-        entityManager.persist(user);
-    }
 }

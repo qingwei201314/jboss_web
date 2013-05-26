@@ -4,11 +4,9 @@ import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
-
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Criteria;
 
@@ -58,7 +56,6 @@ public abstract class CommonDao<T> {
 	 * @param id
 	 * @return
 	 */
-	@SuppressWarnings("unchecked")
 	public T get(Serializable id) {
 		T t = (T) entityManager.find(entityClass, id);
 		return t;
@@ -83,6 +80,20 @@ public abstract class CommonDao<T> {
 		Query query = entityManager.createQuery(countSql);
 		Long totalCount = (Long)query.getSingleResult();
 		return totalCount;
+	}
+	
+	/**
+	 * 根据某一个字段的值查出第一个对象(适合查询唯一对象)
+	 * @param property
+	 * @param value
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public T query(String property, Object value){
+		Query query = entityManager.createQuery("select * from " + entityClass.getName() + " t where t." + property +"=?");
+		query.setParameter(0, value);
+		Object result = query.getSingleResult();
+		return result==null?null:(T)result;
 	}
 
 	/**
