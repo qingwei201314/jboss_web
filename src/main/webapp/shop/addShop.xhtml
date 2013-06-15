@@ -2,8 +2,9 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-<head>
+<h:head>
 <title>填写商店信息</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="#{util.path}/css/bootstrap/bootstrap.css" rel="stylesheet" />
@@ -16,8 +17,8 @@
 	margin-left: 360px;
 }
 </style>
-</head>
-<body style="padding-top: 60px;">
+</h:head>
+<h:body style="padding-top: 60px;">
 	<div class="topbar">
 		<div class="fill">
 			<div class="container">
@@ -36,6 +37,13 @@
 					</div>
 				</div>
 				<div class="clearfix">
+					<label for="xlInput" class="label_width">简称</label>
+					<div class="div_margin">
+						<h:inputText value="#{shopController.shop.shortName}" size="30"
+							class="xlarge" />
+					</div>
+				</div>
+				<div class="clearfix">
 					<label for="xlInput" class="label_width">联系人</label>
 					<div class="div_margin ">
 						<h:inputText value="#{shopController.shop.contact}" size="30"
@@ -45,40 +53,31 @@
 				<div class="clearfix">
 					<label for="xlInput" class="label_width">地址</label>
 					<div class="div_margin ">
-						<h:inputText value="#{shopController.shop.address}" size="30"
-							class="xlarge" style="width:530px;" />
+							<h:selectOneMenu  id="province" value="#{shopController.province}" style="width:150px;">
+								<f:selectItems value="#{shopController.provinces}" />
+								<f:ajax render="town city" execute="province" />
+							</h:selectOneMenu>
+							<h:selectOneMenu id="town" value="#{shopController.town}" style="width:150px;">
+								<f:selectItems value="#{shopController.towns}" />
+								<f:ajax render="city" execute="town"/>
+							</h:selectOneMenu>
+							<h:selectOneMenu id="city" value="#{shopController.city}" style="width:150px;">
+								<f:selectItems value="#{shopController.cities}" />
+							</h:selectOneMenu>
 					</div>
-				</div>
-				<div class="clearfix">
-					<label for="xlInput" class="label_width">描述</label>
+					
 					<div class="div_margin ">
-						<h:inputTextarea value="#{shopController.shop.descript}" class="xxlarge" rows="3" />
+						<h:inputText value="#{shopController.shop.address}" size="30" class="xlarge" style="width:440px;margin-top:5px;" />
 					</div>
 				</div>
 				<div class="clearfix">
 					<label for="xlInput" class="label_width">gate_url</label>
 					<div class="div_margin ">
-						<h:inputText value="#{shopController.shop.gate_url}" size="30"
-							class="xlarge" />
-					</div>
-				</div>
-				<div class="clearfix">
-					<label for="xlInput" class="label_width">user_id</label>
-					<div class="div_margin ">
-						<h:inputText value="#{shopController.shop.user_id}#{userController.phoneSession}" size="30"
-							class="xlarge" />
-					</div>
-				</div>
-				<div class="clearfix">
-					<label for="xlInput" class="label_width">区划</label>
-					<div class="div_margin ">
-						<h:inputText value="#{shopController.shop.district}" size="30"
-							class="xlarge" />
+						<h:inputText value="#{shopController.shop.gate_url}" size="30" class="xlarge" />
 					</div>
 				</div>
 				<div class="actions" style="padding-left: 360px;">
-					<h:commandButton class="btn primary"
-						action="#{shopController.saveShop}" value="保存" />
+					<h:commandButton class="btn primary" action="#{shopController.saveShop}" value="保存" />
 				</div>
 			</fieldset>
 		</h:form>
@@ -86,5 +85,11 @@
 		<p>&copy; 深圳市凯文信息有限公司 2013</p>
 		</footer>
 	</div>
-</body>
+<script type="text/javascript">
+function testKevin(){
+	var d1 = document.getElementById("j_idt7:town");
+	alert(d1.value);
+}
+</script>
+</h:body>
 </html>

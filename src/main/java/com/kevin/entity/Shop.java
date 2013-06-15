@@ -1,5 +1,6 @@
 package com.kevin.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,6 +15,8 @@ public class Shop {
 	private String id;
 	private String user_id;
 	private String name;
+	@Column(name="short_name")
+	private String shortName;
 	private String contact;
 	private String address;
 	private String district = "445121";
@@ -83,4 +86,13 @@ public class Shop {
 	public void setDescript(String descript) {
 		this.descript = descript;
 	}
+
+	public String getShortName() {
+		return shortName;
+	}
+
+	public void setShortName(String shortName) {
+		this.shortName = shortName;
+	}
+	
 }

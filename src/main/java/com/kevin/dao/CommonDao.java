@@ -95,6 +95,20 @@ public abstract class CommonDao<T> {
 		Object result = query.getSingleResult();
 		return result==null?null:(T)result;
 	}
+	
+	/**
+	 * 根据某个属性的值查出列表
+	 * @param property
+	 * @param value
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public List<T> queryList(String property, Object value){
+		Query query = entityManager.createQuery("from " + entityClass.getName() + " t where t." + property +"=?");
+		query.setParameter(1, value);
+		List<T> result = (List<T>)query.getResultList();
+		return result;
+	}
 
 	/**
 	 * 取得指定页的记录
@@ -109,6 +123,7 @@ public abstract class CommonDao<T> {
 		return list;
 	}
 
+
 //	public Page<T> getPage(Criteria criteria, int pageNo, int pageSize) {
 //		// 查出总记录数.
 //		Long total = getCount(criteria);
@@ -119,5 +134,8 @@ public abstract class CommonDao<T> {
 //		page.setList(list);
 //		return page;
 //	}
-
+	
+	public EntityManager getEntityManager() {
+		return entityManager;
+	}
 }

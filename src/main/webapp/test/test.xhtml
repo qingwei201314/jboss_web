@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+</h:head>
+<h:body>
+	<h:form>
+		<fieldset>
+			State:
+			<h:selectOneMenu value="#{locationBean.state}">
+				<f:selectItems value="#{locationBean.states}" />
+				<f:ajax render="cityList" />
+			</h:selectOneMenu>
+			<br />City:
+			<h:selectOneMenu value="#{locationBean.city}" disabled="#{locationBean.cityListDisabled}" id="cityList">
+				<f:selectItems value="#{locationBean.cities}" />
+				<f:ajax render="population" />
+			</h:selectOneMenu>
+			<br />Population:
+			<h:outputText value="#{locationBean.city}" id="population" />
+		</fieldset>
+	</h:form>
+</h:body>
+</html>
