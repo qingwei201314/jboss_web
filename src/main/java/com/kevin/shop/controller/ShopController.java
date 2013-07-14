@@ -25,7 +25,7 @@ public class ShopController {
 	private static final Integer noChoice = -1; //页面请选择项的值
 	
 	public String saveShop(){
-		shop = shopService.dealShop(shop,phoneSession);
+//		shop = shopService.dealShop(shop,phoneSession);
 		return "/category/addCategory";
 	}
 	
