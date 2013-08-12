@@ -90,11 +90,11 @@ public abstract class CommonDao<T> {
 	 */
 	@SuppressWarnings("unchecked")
 	public T query(String property, Object value){
-		Query query = entityManager.createQuery("select * from " + entityClass.getName() + " t where t." + property +"=?");
-		query.setParameter(0, value);
+		Query query = entityManager.createQuery("from " + entityClass.getName() + " t where t." + property +"=?");
+		query.setParameter(1, value);
 		Object result = query.getSingleResult();
 		return result==null?null:(T)result;
-	}
+	} 
 	
 	/**
 	 * 根据某个属性的值查出列表

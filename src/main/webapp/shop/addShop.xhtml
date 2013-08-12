@@ -30,7 +30,7 @@
 		</div>
 	</div>
 	<div class="container">
-		<h:form enctype="multipart/form-data" method="post" >
+		<h:form>
 			<fieldset>
 				<div class="clearfix">
 					<label for="xlInput" class="label_width">名称</label>
@@ -76,7 +76,9 @@
 				<div class="clearfix">
 					<label for="xlInput" class="label_width">大门图片</label>
 					<div class="div_margin ">
+						<img id="gatePhone" src="" style="width: 580px;height: 290px;display: none;" />
 						<input type="file" name="file_upload" id="file_upload" /> 
+						<h:inputHidden value="#{shopController.shop.gate_url}" id="gate_url" />
 					</div>
 				</div>
 				<div class="actions" style="padding-left: 360px;">
@@ -91,8 +93,18 @@
 <script type="text/javascript">
 	$(function() {
       $('#file_upload').uploadify({
-         'swf'      : 'http://localhost:8080/jboss_web/uploadify/uploadify.swf',
-         'uploader' : 'http://localhost:8080/jboss_web/uploadify/uploadify.jsp'
+         'swf'      : '#{util.path}/uploadify/uploadify.swf',
+         'uploader' : '#{util.path}/uploadify/uploadify.jsp',
+         'buttonText' : '上传图片', 
+         'width'    :  '52',
+         'height'   :  '18',
+         'fileTypeExts' : '*.gif; *.jpg; *.png',
+         'onUploadSuccess' : function(file, data, response) {
+        	 $("#gatePhone").show();
+        	 $("#gatePhone").attr("src", "#{util.path}"+data); 
+        	 $("#j_idt7\\:gate_url").val(data);
+          },
+         'buttonClass' : 'btn info'
       });
     });
 </script>

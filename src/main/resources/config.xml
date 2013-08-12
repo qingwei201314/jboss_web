@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<path>http://localhost:8080/jboss_web</path>
+<root>
+	<path>http://localhost:8080/jboss_web</path>
+	<upload>D:/eclipse/workspace/jboss_web/src/main/webapp/repository</upload>
+	<repository>/repository</repository>
+</root>

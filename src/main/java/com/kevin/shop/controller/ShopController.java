@@ -1,21 +1,22 @@
 package com.kevin.shop.controller;
 
 import java.util.List;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import com.kevin.entity.Shop;
 import com.kevin.shop.service.ShopService;
+import com.kevin.util.Constant;
 
 @ManagedBean
 @javax.faces.bean.SessionScoped
 public class ShopController {
 	@Inject
 	private ShopService shopService;
-	
-	@SessionScoped
-	private String phoneSession;
 	private Shop shop = new Shop();
 	private Integer province;
 	private Integer town;
@@ -25,7 +26,9 @@ public class ShopController {
 	private static final Integer noChoice = -1; //页面请选择项的值
 	
 	public String saveShop(){
-//		shop = shopService.dealShop(shop,phoneSession);
+		HttpSession session = ((HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest()).getSession();
+		String phone = (String)session.getAttribute(Constant.phone);
+		shop = shopService.dealShop(shop, phone);
 		return "/category/addCategory";
 	}
 	
@@ -47,14 +50,6 @@ public class ShopController {
 
 	public void setShop(Shop shop) {
 		this.shop = shop;
-	}
-
-	public String getPhoneSession() {
-		return phoneSession;
-	}
-
-	public void setPhoneSession(String phoneSession) {
-		this.phoneSession = phoneSession;
 	}
 
 	public Integer getProvince() {
@@ -93,4 +88,5 @@ public class ShopController {
 	public Integer getTown() {
 		return town;
 	}
+
 }

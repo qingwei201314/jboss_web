@@ -26,8 +26,8 @@ public class ShopService {
 	/**
 	 * 保存对象
 	 */
-	public Shop dealShop(Shop shop, String phoneSession){
-		User user = userDao.query("phone", phoneSession);
+	public Shop dealShop(Shop shop, String phone){
+		User user = userDao.query("phone", phone);
 		shop.setUser_id(user.getId());
 		shopDao.save(shop);
 		return shop;
