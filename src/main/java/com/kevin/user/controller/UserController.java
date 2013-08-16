@@ -1,11 +1,15 @@
 package com.kevin.user.controller;
 
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import com.kevin.dao.UserDao;
 import com.kevin.entity.User;
+import com.kevin.util.Constant;
 
 @Named
 @RequestScoped
@@ -14,12 +18,11 @@ public class UserController {
     private UserDao userDao;
     @RequestScoped
 	private User user = new User();
-    @SessionScoped
-    private String phoneSession;
-    
+	
 	public String saveUser(){
 		userDao.save(user);
-		phoneSession = user.getPhone();
+		HttpSession session = ((HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest()).getSession();
+		session.setAttribute(Constant.phone, user.getPhone());
 		return "/shop/addShop";
 	}
 	
@@ -30,11 +33,4 @@ public class UserController {
 		this.user = user;
 	}
 
-	public String getPhoneSession() {
-		return phoneSession;
-	}
-
-	public void setPhoneSession(String phoneSession) {
-		this.phoneSession = phoneSession;
-	}
 }

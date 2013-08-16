@@ -5,7 +5,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import com.kevin.dao.CategoryDao;
 import com.kevin.entity.Category;
-import com.kevin.entity.Shop;
 @Named
 @RequestScoped
 public class CategoryController {
@@ -25,6 +24,5 @@ public class CategoryController {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-	
 	
 }
