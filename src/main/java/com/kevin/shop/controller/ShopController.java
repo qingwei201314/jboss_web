@@ -7,7 +7,6 @@ import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import com.kevin.entity.Shop;
 import com.kevin.shop.service.ShopService;
 import com.kevin.util.Constant;
@@ -88,5 +87,4 @@ public class ShopController {
 	public Integer getTown() {
 		return town;
 	}
-
 }

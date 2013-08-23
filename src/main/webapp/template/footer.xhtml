@@ -3,12 +3,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-<head>
+<h:head>
 <title></title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="#{util.path}/css/bootstrap/bootstrap.css" rel="stylesheet" />
-</head>
-<body style="padding-top: 60px;">
+<link href="#{util.path}/css/main.css" rel="stylesheet" />
+<script type="text/javascript" src="#{util.path}/js/jquery-1.8.3.min.js" />
+<ui:insert name="head"></ui:insert>
+</h:head>
+<h:body style="padding-top: 60px;">
 	<ui:insert name="topbar"></ui:insert>
 	<div class="container">
 		<ui:insert name="container"></ui:insert>
@@ -16,5 +19,6 @@
 		<p>© ----------- 2013</p>
 		</footer>
 	</div>
-</body>
+	<script type="text/javascript"><ui:insert name="js"></ui:insert></script>
+</h:body>
 </html>

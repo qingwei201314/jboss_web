@@ -12,6 +12,7 @@ public class Category {
 	@GeneratedValue(generator = "generator")	
 	private String id;
 	private String name;
+	private String shop_id;
 	
 	public String getId() {
 		return id;
@@ -25,4 +26,11 @@ public class Category {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public String getShop_id() {
+		return shop_id;
+	}
+	public void setShop_id(String shop_id) {
+		this.shop_id = shop_id;
+	}
+	
 }

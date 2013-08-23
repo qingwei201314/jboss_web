@@ -1,32 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
-<head>
-<title>增加类别</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="#{util.path}/css/bootstrap/bootstrap.css" rel="stylesheet" />
-<script type="text/javascript" src="#{util.path}/js/jquery-1.8.3.min.js" />
-<style type="text/css">
-.label_width {
-	width: 340px;
-}
-
-.div_margin {
-	margin-left: 360px;
-}
-</style>
-</head>
-<h:body style="padding-top: 60px;">
-	<div class="topbar">
-		<div class="fill">
-			<div class="container">
-				<a class="brand" href="#">填写类别名称</a>
-			</div>
-		</div>
-	</div>
-	<div class="container">
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="#{util.path}/template/manage.xhtml">
+	<ui:define name="container">
 		<h:form>
 		<fieldset>
 			<div class="clearfix">
@@ -40,9 +17,5 @@
 			</div>
 		</fieldset>
 		</h:form>
-	<footer>
-		<p>&copy; 深圳市凯文信息有限公司 2013</p>
-	</footer>
-	</div>
-</h:body>
-</html>
+	</ui:define>
+</ui:composition>

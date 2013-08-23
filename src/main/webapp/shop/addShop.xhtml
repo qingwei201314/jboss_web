@@ -1,34 +1,13 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
-<h:head>
-<title>填写商店信息</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="#{util.path}/css/bootstrap/bootstrap.css" rel="stylesheet" />
-<link href="#{util.path}/uploadify/uploadify.css" rel="stylesheet" type="text/css"  />
-<script type="text/javascript" src="#{util.path}/js/jquery-1.8.3.min.js" />
-<script type="text/javascript" src="#{util.path}/uploadify/jquery.uploadify.min.js" />
-<style type="text/css">
-.label_width {
-	width: 340px;
-}
-.div_margin {
-	margin-left: 360px;
-}
-</style>
-</h:head>
-<h:body style="padding-top: 60px;">
-	<div class="topbar">
-		<div class="fill">
-			<div class="container">
-				<a class="brand" href="#">填写具体信息</a>
-			</div>
-		</div>
-	</div>
-	<div class="container">
+	template="#{util.path}/template/manage.xhtml">
+	<ui:define name="head">
+		<link href="#{util.path}/uploadify/uploadify.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="#{util.path}/uploadify/jquery.uploadify.min.js" />
+	</ui:define>
+	<ui:define name="container">
 		<h:form>
 			<fieldset>
 				<div class="clearfix">
@@ -55,54 +34,61 @@
 				<div class="clearfix">
 					<label for="xlInput" class="label_width">地址</label>
 					<div class="div_margin ">
-							<h:selectOneMenu  id="province" value="#{shopController.province}" style="width:150px;">
-								<f:selectItems value="#{shopController.provinces}" />
-								<f:ajax render="town city" execute="province" />
-							</h:selectOneMenu>
-							<h:selectOneMenu id="town" value="#{shopController.town}" style="width:150px;">
-								<f:selectItems value="#{shopController.towns}" />
-								<f:ajax render="city" execute="town"/>
-							</h:selectOneMenu>
-							<h:selectOneMenu id="city" value="#{shopController.city}" style="width:150px;">
-								<f:selectItems value="#{shopController.cities}" />
-							</h:selectOneMenu>
+						<h:selectOneMenu id="province" value="#{shopController.province}"
+							style="width:150px;">
+							<f:selectItems value="#{shopController.provinces}" />
+							<f:ajax render="town city" execute="province" />
+						</h:selectOneMenu>
+						<h:selectOneMenu id="town" value="#{shopController.town}"
+							style="width:150px;">
+							<f:selectItems value="#{shopController.towns}" />
+							<f:ajax render="city" execute="town" />
+						</h:selectOneMenu>
+						<h:selectOneMenu id="city" value="#{shopController.city}"
+							style="width:150px;">
+							<f:selectItems value="#{shopController.cities}" />
+						</h:selectOneMenu>
 					</div>
-					
+
 					<div class="div_margin ">
-						<h:inputText value="#{shopController.shop.address}" size="30" class="xlarge" style="width:440px;margin-top:5px;" />
+						<h:inputText value="#{shopController.shop.address}" size="30"
+							class="xlarge" style="width:440px;margin-top:5px;" />
 					</div>
 				</div>
 				<div class="clearfix">
 					<label for="xlInput" class="label_width">大门图片</label>
 					<div class="div_margin ">
-						<img id="gatePhone" src="" style="width: 580px;height: 290px;display: none;" />
-						<input type="file" name="file_upload" id="file_upload" /> 
-						<h:inputHidden value="#{shopController.shop.gate_url}" id="gate_url" />
+						<img id="gatePhone" src=""
+							style="width: 580px; height: 290px; display: none;" /> <input
+							type="file" name="file_upload" id="file_upload" />
+						<h:inputHidden value="#{shopController.shop.gate_url}"
+							id="gate_url" />
 					</div>
 				</div>
 				<div class="actions" style="padding-left: 360px;">
-					<h:commandButton class="btn primary" action="#{shopController.saveShop}" value="保存" />
+					<h:commandButton class="btn primary"
+						action="#{shopController.saveShop}" value="保存" />
 				</div>
 			</fieldset>
 		</h:form>
-	</div>
-<script type="text/javascript">
-	$(function() {
-      $('#file_upload').uploadify({
-         'swf'      : '#{util.path}/uploadify/uploadify.swf',
-         'uploader' : '#{util.path}/uploadify/uploadify.jsp',
-         'buttonText' : '上传图片', 
-         'width'    :  '52',
-         'height'   :  '18',
-         'fileTypeExts' : '*.gif; *.jpg; *.png',
-         'onUploadSuccess' : function(file, data, response) {
-        	 $("#gatePhone").show();
-        	 $("#gatePhone").attr("src", "#{util.path}"+data); 
-        	 $("#j_idt7\\:gate_url").val(data);
-          },
-         'buttonClass' : 'btn info'
-      });
-    });
-</script>
-</h:body>
-</html>
+	</ui:define>
+	<ui:define name="js">
+			$(function() {
+		      $('#file_upload').uploadify({
+		         'swf'      : '#{util.path}/uploadify/uploadify.swf',
+		         'uploader' : '#{util.path}/uploadify/uploadify.jsp',
+		         'buttonText' : '上传图片', 
+		         'width'    :  '52',
+		         'height'   :  '18',
+		         'fileTypeExts' : '*.gif; *.jpg; *.png',
+		         'onUploadSuccess' : function(file, data, response) {
+		        	 $("#gatePhone").show();
+		        	 $("#gatePhone").attr("src", "#{util.path}"+data); 
+		        	 $("#j_idt7\\:gate_url").val(data);
+		          },
+		         'buttonClass' : 'btn info'
+		      });
+		    });
+	</ui:define>
+</ui:composition>
+

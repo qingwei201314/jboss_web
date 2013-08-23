@@ -2,8 +2,12 @@ package com.kevin.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity(name = "shop")
@@ -14,6 +18,9 @@ public class Shop {
 	@GenericGenerator(name = "generator", strategy = "uuid.hex")
 	private String id;
 	private String user_id;
+	@OneToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="user_id", insertable=false, updatable=false)
+	private User user;
 	private String name;
 	@Column(name="short_name")
 	private String shortName;
@@ -93,6 +100,14 @@ public class Shop {
 
 	public void setShortName(String shortName) {
 		this.shortName = shortName;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 }
