@@ -3,13 +3,19 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	template="#{util.path}/template/manage.xhtml">
+	<ui:define name="head">
+		<link href="../css/shop/shop.css" rel="stylesheet" />
+		<link href="#{util.path}/uploadify/uploadify.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="#{util.path}/uploadify/jquery.uploadify.min.js" />
+	</ui:define>
 	<ui:define name="container">
 		<h:form>
 			<fieldset>
 				<div class="clearfix">
 					<label for="xlInput" class="label_width">类别</label>
 					<div class="div_margin">
-						<h:selectOneMenu  value="#{productController.product.category_id}" class="xlarge" >
+						<h:selectOneMenu value="#{productController.product.category_id}"
+							class="xlarge">
 							<f:selectItems value="#{productController.categoryList}"></f:selectItems>
 						</h:selectOneMenu>
 					</div>
@@ -28,11 +34,47 @@
 							size="30" class="xlarge" />
 					</div>
 				</div>
-				<div class="actions" style="padding-left: 360px;">
-					<h:commandButton class="btn primary"
-						action="#{productController.saveProduct}" value="保存" />
+				<div class="clearfix">
+					<label for="xlInput" class="label_width">图片</label>
+					<div class="div_margin">
+						<input type="file" name="file_upload" id="file_upload" />
+					</div>
 				</div>
 			</fieldset>
+			<div class="row" id="photos" >
+				<div id="photoItem" class="span-one-third" style="display: none">
+					<p>
+						<a href="canteen/viewCanteen.html"><img class="product"
+							src="" />
+						</a>
+					</p>
+					<input type="hidden" />
+				</div>
+			</div>
+			<div class="actions" style="padding-left: 360px;">
+				<h:commandButton class="btn primary" action="#{productController.saveProduct}" value="保存" />
+			</div>
 		</h:form>
+	</ui:define>
+	<ui:define name="js">
+			$(function() {
+		      $('#file_upload').uploadify({
+		         'swf'      : '#{util.path}/uploadify/uploadify.swf',
+		         'uploader' : '#{util.path}/uploadify/uploadify.jsp',
+		         'buttonText' : '上传图片', 
+		         'width'    :  '52',
+		         'height'   :  '18',
+		         'fileTypeExts' : '*.gif; *.jpg; *.png',
+		         'onUploadSuccess' : function(file, data, response) {
+		         	 var photoItem = $("#photoItem").clone();
+		         	 photoItem.find('img').attr("src", "#{util.path}"+data);
+		         	 photoItem.find('input[type=hidden]').val(data);
+		         	 photoItem.find('input[type=hidden]').attr("name", "image_url");
+		         	 photoItem.show();
+		         	 $("#photos").append(photoItem);
+		          },
+		         'buttonClass' : 'btn info'
+		      });
+		    });
 	</ui:define>
 </ui:composition>

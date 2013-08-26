@@ -24,9 +24,11 @@ public class ProductController {
 	private List<SelectItem> categoryList;
 	
 	public String saveProduct(){
-		HttpSession session = ((HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest()).getSession();
+		HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
+		HttpSession session = request.getSession();
 		String phone = (String)session.getAttribute(Constant.phone);
-		productService.save(product, phone);
+		String[]  image_url = request.getParameterValues("image_url");
+		productService.save(product, phone, image_url);
 		return "product/addProduct";
 	}
 	

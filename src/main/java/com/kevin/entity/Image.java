@@ -14,6 +14,11 @@ public class Image {
 	private String product_id;
 	private String url;
 	
+	public Image(String product_id, String url){
+		this.product_id = product_id;
+		this.url = url;
+	}
+	
 	public String getId() {
 		return id;
 	}
