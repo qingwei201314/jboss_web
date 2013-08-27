@@ -13,4 +13,5 @@
 	out.print(Util.repository() + path);
 	out.flush();
 	out.clear();
+	response.addCookie(new Cookie("JSESSIONID", request.getParameter("JSESSIONID")));
 %>

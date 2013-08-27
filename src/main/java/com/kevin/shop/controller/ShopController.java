@@ -1,5 +1,6 @@
 package com.kevin.shop.controller;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
@@ -24,11 +25,11 @@ public class ShopController {
 	private List<SelectItem> cityList; //县集合
 	private static final Integer noChoice = -1; //页面请选择项的值
 	
-	public String saveShop(){
+	public String saveShop() throws IllegalAccessException, InvocationTargetException{
 		HttpSession session = ((HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest()).getSession();
 		String phone = (String)session.getAttribute(Constant.phone);
 		shop = shopService.dealShop(shop, phone);
-		return "/category/addCategory";
+		return "/admin/category/addCategory";
 	}
 	
 	/**
