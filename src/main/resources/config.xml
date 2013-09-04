@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
 	<path>http://localhost:8080/jboss_web</path>
+	<uploadProject>http://localhost:8080/upload</uploadProject>
 	<upload>D:/jboss-as-7.1.1.Final/standalone/deployments/jboss_web.war/repository</upload>
 	<repository>/repository</repository>
 </root>

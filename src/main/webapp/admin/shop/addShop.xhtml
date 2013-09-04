@@ -74,18 +74,22 @@
 	</ui:define>
 	<ui:define name="js">
 			$(function() {
+			  var width = '580';
+			  var height = '290';
+			  var phone = '#{phone}';
+			  var jspPaht = '#{util.uploadProject}/uploadify/uploadifyGate.jsp?phone=#{phone}&amp;width='+width +'&amp;height='+ height;
 		      $('#file_upload').uploadify({
-		         'swf'      : '#{util.path}/uploadify/uploadify.swf',
-		         'uploader' : '#{util.path}/uploadify/uploadifyGate.jsp',
-		         'formData' : {'JSESSIONID':'#{request.session.id}'},
+		         'swf'      : '#{util.uploadProject}/uploadify/uploadify.swf',
+		         'uploader' : jspPaht,
 		         'buttonText' : '上传图片', 
-		         'width'    :  '52',
-		         'height'   :  '18',
+		         'width'    :  '52px',
+		         'height'   :  '18px',
 		         'fileTypeExts' : '*.gif; *.jpg; *.png',
 		         'onUploadSuccess' : function(file, data, response) {
-		        	 $("#gatePhone").show();
-		        	 $("#gatePhone").attr("src", "#{util.path}"+data); 
-		        	 $("#j_idt7\\:gate_url").val(data);
+		         	var path = "#{util.uploadProject}#{util.repository}" + data;
+		        	$("#gatePhone").show();
+		        	$("#gatePhone").attr("src", path); 
+		        	$("#j_idt9\\:gate_url").val(data);
 		          },
 		         'buttonClass' : 'btn info'
 		      });
