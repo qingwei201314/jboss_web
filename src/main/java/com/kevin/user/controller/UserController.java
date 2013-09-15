@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import com.kevin.dao.UserDao;
 import com.kevin.entity.User;
+import com.kevin.user.service.UserService;
 import com.kevin.util.Constant;
 
 @Named
@@ -16,9 +17,28 @@ import com.kevin.util.Constant;
 public class UserController {
 	@Inject
     private UserDao userDao;
+	@Inject
+	private UserService userService;
     @RequestScoped
 	private User user = new User();
 	
+    /**
+     * 用户登录
+     */
+	public String login(){
+		String resultPath = "/user/login";
+		boolean pass = userService.login(user);
+		if(pass){
+			resultPath = "/admin/shop/addShop";
+			HttpSession session = ((HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest()).getSession();
+			session.setAttribute(Constant.phone, user.getPhone());
+		}
+		return resultPath;
+	}
+	
+	/**
+	 * 用户注册
+	 */
 	public String saveUser(){
 		userDao.save(user);
 		HttpSession session = ((HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest()).getSession();

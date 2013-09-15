@@ -1,11 +1,14 @@
 package com.kevin.shop.service;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
+
+import org.apache.commons.beanutils.BeanUtils;
 
 import com.kevin.dao.CityDao;
 import com.kevin.dao.ShopDao;
@@ -25,11 +28,22 @@ public class ShopService {
 	
 	/**
 	 * 保存对象
+	 * @throws InvocationTargetException 
+	 * @throws IllegalAccessException 
 	 */
-	public Shop dealShop(Shop shop, String phone){
+	public Shop dealShop(Shop shop, String phone) throws IllegalAccessException, InvocationTargetException{
 		User user = userDao.query("phone", phone);
-		shop.setUser_id(user.getId());
-		shopDao.save(shop);
+		Shop shop_db = user.getShop();
+		if(shop_db==null){
+			shop_db = shop;
+		}
+		else{
+			shop.setId(shop_db.getId());
+			BeanUtils.copyProperties(shop_db, shop);
+		}
+		shop_db.setId(shop_db.getId());
+		shop_db.setUser_id(user.getId());
+		shopDao.save(shop_db);
 		return shop;
 	}
 	
