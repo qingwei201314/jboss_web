@@ -7,7 +7,7 @@
 		<h:form>
 			<fieldset>
 				<div style="width: 500px;margin:0 auto;">
-					<table class="zebra-striped" id="sortTableExample">
+					<table class="bordered-table zebra-striped" id="sortTableExample">
 						<thead>
 							<tr>
 								<th class="blue">名称</th>
@@ -15,10 +15,14 @@
 							</tr>
 						</thead>
 						<tbody>
+						<ui:repeat var="category" value="#{categoryController.categoryList}">
 							<tr>
-								<td>Your</td>
-								<td>One</td>
+								<td>#{category.name}</td>
+								<td>
+									<h:commandLink action="#{categoryController.deleteCategory(category.id)}" value="删除" />
+								</td>
 							</tr>
+						</ui:repeat>
 						</tbody>
 					</table>
 				</div>

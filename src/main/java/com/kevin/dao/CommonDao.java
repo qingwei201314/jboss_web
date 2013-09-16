@@ -69,6 +69,14 @@ public abstract class CommonDao<T> {
 	public void delete(T entity) {
 		entityManager.remove(entity);
 	}
+	
+	/**
+	 * 根据id删除记录
+	 */
+	public void deleteById(String id) {
+		T entity = this.get(id);
+		entityManager.remove(entity);
+	}
 
 	/**
 	 * 取得表的总记录数
