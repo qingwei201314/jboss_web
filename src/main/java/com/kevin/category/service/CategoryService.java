@@ -1,5 +1,7 @@
 package com.kevin.category.service;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -19,5 +21,14 @@ public class CategoryService {
 		Shop shop =shopDao.getByPhone(phone);
 		category.setShop_id(shop.getId());
 		categoryDao.save(category);
+	}
+	
+	/**
+	 * 取得当前店的所有分类
+	 */
+	public List<Category> list(String phone) {
+		Shop shop =shopDao.getByPhone(phone);
+		List<Category> categoryList = categoryDao.getByShop(shop.getId());
+		return categoryList;
 	}
 }
