@@ -1,8 +1,12 @@
 package com.kevin.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity(name="product")
@@ -15,6 +19,9 @@ public class Product {
 	private String description;
 	private String shop_id;
 	private String category_id;
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="category_id", insertable=false, updatable=false)
+	private Category category;
 	
 	public String getId() {
 		return id;
@@ -45,5 +52,11 @@ public class Product {
 	}
 	public void setCategory_id(String category_id) {
 		this.category_id = category_id;
+	}
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 }

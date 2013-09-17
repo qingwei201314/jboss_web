@@ -20,6 +20,7 @@
 								<td>#{category.name}</td>
 								<td>
 									<h:commandLink action="#{categoryController.deleteCategory(category.id)}" value="删除" />
+									<h:commandLink action="#{productController.addProduct(category.id)}" value="添加产品" />
 								</td>
 							</tr>
 						</ui:repeat>
