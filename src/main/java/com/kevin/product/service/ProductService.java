@@ -1,16 +1,22 @@
 package com.kevin.product.service;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
+
+import org.apache.commons.beanutils.BeanUtils;
+
 import com.kevin.dao.CategoryDao;
 import com.kevin.dao.ProductDao;
 import com.kevin.dao.ShopDao;
 import com.kevin.entity.Category;
 import com.kevin.entity.Product;
 import com.kevin.entity.Shop;
+import com.kevin.product.vo.ProductVo;
 
 @Stateless
 public class ProductService {
@@ -41,7 +47,13 @@ public class ProductService {
 		Shop shop =shopDao.getByPhone(phone);
 		product.setShop_id(shop.getId());
 		productDao.save(product);
-		product = productDao.get(product.getId());
-		System.out.println(product.getCategory().getId());
+	}
+	
+	public ProductVo get(String productId) throws IllegalAccessException, InvocationTargetException{
+		Product product = productDao.get(productId);
+		ProductVo productVo = new ProductVo();
+		BeanUtils.copyProperties(productVo, product);
+		productVo.setCategoryName(product.getCategory().getName());
+		return productVo;
 	}
 }

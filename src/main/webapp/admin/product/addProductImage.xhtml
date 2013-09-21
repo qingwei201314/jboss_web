@@ -5,47 +5,51 @@
 	template="#{util.path}/template/manage.xhtml">
 	<ui:define name="head">
 		<link href="../css/shop/shop.css" rel="stylesheet" />
-		<link href="#{util.path}/uploadify/uploadify.css" rel="stylesheet" type="text/css" />
-		<script type="text/javascript" src="#{util.path}/uploadify/jquery.uploadify.min.js" />
+		<link href="#{util.path}/uploadify/uploadify.css" rel="stylesheet"
+			type="text/css" />
+		<script type="text/javascript"
+			src="#{util.path}/uploadify/jquery.uploadify.min.js" />
 	</ui:define>
 	<ui:define name="container">
 		<h:form>
 			<fieldset>
-				<div class="clearfix">
-					<label for="xlInput" class="label_width">类别</label>
-					<div class="div_margin">
-						#{productController.product.category.name}
-					</div>
-				</div>
-				<div class="clearfix">
-					<label for="xlInput" class="label_width">名称</label>
-					<div class="div_margin">
-						#{productController.product.name}
-					</div>
-				</div>
-				<div class="clearfix">
-					<label for="xlInput" class="label_width">描述</label>
-					<div class="div_margin">
-						#{productController.product.description}
-					</div>
-				</div>
+			<div style="width: 500px;margin:0 auto;">
+				<table class="bordered-table zebra-striped">
+					<tbody>
+						<tr>
+							<td>类别</td>
+							<td>#{productController.productVo.categoryName}</td>
+						</tr>
+						<tr>
+							<td>名称</td>
+							<td>#{productController.productVo.name}</td>
+						</tr>
+						<tr>
+							<td>描述</td>
+							<td>#{productController.productVo.description}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 			</fieldset>
-			<div class="row" id="photos" >
+			<div class="row" id="photos">
 				<div id="photoItem" class="span-one-third" style="display: none">
 					<p>
-						<a href="canteen/viewCanteen.html"><img class="product"
-							src="" />
+						<a href="canteen/viewCanteen.html"><img class="product" src="" />
 						</a>
 					</p>
 					<input type="hidden" />
 				</div>
 			</div>
-			<div class="actions" style="padding-left: 360px;">
-				<h:commandButton class="btn primary" action="#{productController.saveProduct}" value="保存" />
+			<div class="actions" style="padding-left: 360px;height: 48px;">
+				<div style="float: left;"><h:commandButton class="btn primary" action="#{productController.saveProduct}" value="编辑以上信息" /></div>
+				<div style="float: left;margin-left: 10px;"><input type="file" name="file_upload" id="file_upload" /></div>
 			</div>
 		</h:form>
 	</ui:define>
 	<ui:define name="js">
+		$("#product").attr("class","active");
+		
 			$(function() {
 			  var width = '580';
 			  var height = '290';

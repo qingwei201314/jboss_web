@@ -1,6 +1,8 @@
 package com.kevin.product.controller;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
@@ -8,8 +10,10 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
 import com.kevin.entity.Product;
 import com.kevin.product.service.ProductService;
+import com.kevin.product.vo.ProductVo;
 import com.kevin.util.Constant;
 
 @Named
@@ -18,6 +22,7 @@ public class ProductController {
 	@Inject
 	private ProductService productService;
 	private Product product =new Product();
+	private ProductVo productVo;
 	@SuppressWarnings("unused")
 	private List<SelectItem> categoryList;
 	
@@ -26,11 +31,12 @@ public class ProductController {
 		return "/admin/product/addProduct";
 	}
 	
-	public String saveProduct(){
+	public String saveProduct() throws IllegalAccessException, InvocationTargetException{
 		HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
 		HttpSession session = request.getSession();
 		String phone = (String)session.getAttribute(Constant.phone);
 		productService.save(product, phone);
+		productVo = productService.get(product.getId());
 		return "/admin/product/addProductImage";
 	}
 	
@@ -47,4 +53,13 @@ public class ProductController {
 		List<SelectItem> categoryList = productService.getCategoryList(phone);
 		return categoryList;
 	}
+
+	public ProductVo getProductVo() {
+		return productVo;
+	}
+
+	public void setProductVo(ProductVo productVo) {
+		this.productVo = productVo;
+	}
+	
 }

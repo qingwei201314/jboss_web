@@ -2,13 +2,18 @@ package com.kevin.shop.controller;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
+import com.kevin.city.service.CityService;
+import com.kevin.dao.ShopDao;
 import com.kevin.entity.Shop;
+import com.kevin.shop.CityVo;
 import com.kevin.shop.service.ShopService;
 import com.kevin.util.Constant;
 
@@ -17,6 +22,10 @@ import com.kevin.util.Constant;
 public class ShopController {
 	@Inject
 	private ShopService shopService;
+	@Inject
+	private ShopDao shopDao;
+	@Inject
+	private CityService cityService;
 	private Shop shop = new Shop();
 	private Integer province;
 	private Integer town;
@@ -28,7 +37,7 @@ public class ShopController {
 	public String saveShop() throws IllegalAccessException, InvocationTargetException{
 		HttpSession session = ((HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest()).getSession();
 		String phone = (String)session.getAttribute(Constant.phone);
-		shop = shopService.dealShop(shop, phone);
+		shop = shopService.dealShop(shop, phone, city);
 		return "/admin/category/addCategory";
 	}
 	
@@ -45,6 +54,14 @@ public class ShopController {
 	}
 	
 	public Shop getShop() {
+		HttpSession session = ((HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest()).getSession();
+		String phone = (String)session.getAttribute(Constant.phone);
+		shop = shopDao.getByPhone(phone);
+		CityVo cityVo = cityService.getByShopDistrict(shop.getDistrict());
+		this.province = cityVo.getProvince();
+		this.town = cityVo.getTown();
+		this.city = cityVo.getCity();
+		cityList = shopService.getTown(town);
 		return shop;
 	}
 

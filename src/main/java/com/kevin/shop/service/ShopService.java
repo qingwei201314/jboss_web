@@ -31,7 +31,7 @@ public class ShopService {
 	 * @throws InvocationTargetException 
 	 * @throws IllegalAccessException 
 	 */
-	public Shop dealShop(Shop shop, String phone) throws IllegalAccessException, InvocationTargetException{
+	public Shop dealShop(Shop shop, String phone, Integer city) throws IllegalAccessException, InvocationTargetException{
 		User user = userDao.query("phone", phone);
 		Shop shop_db = user.getShop();
 		if(shop_db==null){
@@ -43,6 +43,7 @@ public class ShopService {
 		}
 		shop_db.setId(shop_db.getId());
 		shop_db.setUser_id(user.getId());
+		shop_db.setDistrict(city);
 		shopDao.save(shop_db);
 		return shop;
 	}

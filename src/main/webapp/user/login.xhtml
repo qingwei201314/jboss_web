@@ -1,7 +1,18 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	template="#{util.path}/template/manage.xhtml">
+	template="#{util.path}/template/footer.xhtml">
+	<ui:define name="topbar">
+		<div class="topbar">
+			<div class="fill">
+				<div class="container">
+					<ul class="nav">
+						<li class="active"><a href="#">用户登录</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</ui:define>
 	<ui:define name="container">
 		<h:form>
 			<fieldset>

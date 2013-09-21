@@ -26,7 +26,7 @@ public class Shop {
 	private String shortName;
 	private String contact;
 	private String address;
-	private String district = "445121";
+	private Integer district;
 	private String gate_url;
 	private String descript;
 
@@ -70,14 +70,6 @@ public class Shop {
 		this.address = address;
 	}
 
-	public String getDistrict() {
-		return district;
-	}
-
-	public void setDistrict(String district) {
-		this.district = district;
-	}
-
 	public String getGate_url() {
 		return gate_url;
 	}
@@ -109,5 +101,12 @@ public class Shop {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
+
+	public Integer getDistrict() {
+		return district;
+	}
+
+	public void setDistrict(Integer district) {
+		this.district = district;
+	}
 }

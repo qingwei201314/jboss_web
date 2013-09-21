@@ -39,3 +39,16 @@
 .div_margin {
 	margin-left: 360px;
 }
+
+.arrow_img{
+	background-image: url("../img/arrow.png");
+	background-repeat: no-repeat;
+	width: 30px;
+	display: block;
+    float: none;
+    padding-top:19px;
+    padding-left:30px;
+    text-decoration: none;
+    margin-top:10px;
+    margin-left:10px;
+}

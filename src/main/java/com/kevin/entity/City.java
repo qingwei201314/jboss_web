@@ -1,7 +1,10 @@
 package com.kevin.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity(name="city")
 public class City {
@@ -10,6 +13,9 @@ public class City {
 	private String name;
 	private String ename;
 	private Integer parentId;
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="parentId", insertable=false, updatable=false)
+	private City parent;
 	private String code;
 	public Integer getId() {
 		return id;
@@ -40,5 +46,11 @@ public class City {
 	}
 	public void setCode(String code) {
 		this.code = code;
+	}
+	public City getParent() {
+		return parent;
+	}
+	public void setParent(City parent) {
+		this.parent = parent;
 	}
 }
