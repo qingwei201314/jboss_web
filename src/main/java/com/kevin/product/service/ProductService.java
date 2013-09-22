@@ -53,6 +53,7 @@ public class ProductService {
 		Product product = productDao.get(productId);
 		ProductVo productVo = new ProductVo();
 		BeanUtils.copyProperties(productVo, product);
+		productVo.setCategory_id(product.getCategory().getId());
 		productVo.setCategoryName(product.getCategory().getName());
 		return productVo;
 	}

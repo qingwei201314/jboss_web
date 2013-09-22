@@ -115,3 +115,12 @@
 	opacity: .4;
 	z-index: 10000;
 }
+
+.span-one-third-product-img {
+  width: 300px;
+}
+
+.span-one-third-product-img p {
+	text-align: center;
+	margin-bottom: 19px;
+}

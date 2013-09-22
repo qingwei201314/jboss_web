@@ -22,11 +22,14 @@ public class ProductController {
 	@Inject
 	private ProductService productService;
 	private Product product =new Product();
-	private ProductVo productVo;
+	private ProductVo productVo = new ProductVo();
 	@SuppressWarnings("unused")
 	private List<SelectItem> categoryList;
 	
 	public String addProduct(String categoryId){
+		if(categoryId ==null && productVo.getCategory_id() !=null){
+			categoryId = productVo.getCategory_id();
+		}
 		product.setCategory_id(categoryId);
 		return "/admin/product/addProduct";
 	}

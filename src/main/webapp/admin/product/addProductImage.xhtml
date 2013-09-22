@@ -4,7 +4,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	template="#{util.path}/template/manage.xhtml">
 	<ui:define name="head">
-		<link href="../css/shop/shop.css" rel="stylesheet" />
+		<link href="#{util.path}/css/shop/shop.css" rel="stylesheet" />
 		<link href="#{util.path}/uploadify/uploadify.css" rel="stylesheet"
 			type="text/css" />
 		<script type="text/javascript"
@@ -41,11 +41,73 @@
 					<input type="hidden" />
 				</div>
 			</div>
-			<div class="actions" style="padding-left: 360px;height: 48px;">
+			<div class="actions" style="padding-left: 360px;height:31px;">
 				<div style="float: left;"><h:commandButton class="btn primary" action="#{productController.saveProduct}" value="编辑以上信息" /></div>
 				<div style="float: left;margin-left: 10px;"><input type="file" name="file_upload" id="file_upload" /></div>
+				<div style="float: right;">
+					<h:inputHidden value="#{productController.productVo.category_id}" />
+					<h:commandButton class="btn primary" action="#{productController.addProduct(null)}" value="添加新产品" />
+				</div>
+				
 			</div>
 		</h:form>
+		<div class="row">
+			<div class="span-one-third-product-img">
+				<p>
+					<a href="canteen/viewCanteen.html"><img class="product"
+						src="../../img/kocla/kocla.jpg" />
+					</a>
+				</p>
+			</div>
+			<div class="span-one-third-product-img">
+				<p>
+					<img class="product" src="../../img/kocla/kocla.jpg" />
+				</p>
+			</div>
+			<div class="span-one-third-product-img">
+				<p>
+					<img class="product" src="../../img/kocla/kocla.jpg" />
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span-one-third-product-img">
+				<p>
+					<a href="canteen/viewCanteen.html"><img class="product"
+						src="../../img/kocla/kocla.jpg" />
+					</a>
+				</p>
+			</div>
+			<div class="span-one-third-product-img">
+				<p>
+					<img class="product" src="../../img/kocla/kocla.jpg" />
+				</p>
+			</div>
+			<div class="span-one-third-product-img">
+				<p>
+					<img class="product" src="../../img/kocla/kocla.jpg" />
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span-one-third-product-img">
+				<p>
+					<a href="canteen/viewCanteen.html"><img class="product"
+						src="../../img/kocla/kocla.jpg" />
+					</a>
+				</p>
+			</div>
+			<div class="span-one-third-product-img">
+				<p>
+					<img class="product" src="../../img/kocla/kocla.jpg" />
+				</p>
+			</div>
+			<div class="span-one-third-product-img">
+				<p>
+					<img class="product" src="../../img/kocla/kocla.jpg" />
+				</p>
+			</div>
+		</div>
 	</ui:define>
 	<ui:define name="js">
 		$("#product").attr("class","active");
