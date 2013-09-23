@@ -11,6 +11,7 @@ import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.kevin.dao.ProductDao;
 import com.kevin.entity.Product;
 import com.kevin.product.service.ProductService;
 import com.kevin.product.vo.ProductVo;
@@ -21,6 +22,9 @@ import com.kevin.util.Constant;
 public class ProductController {
 	@Inject
 	private ProductService productService;
+	@Inject
+	private ProductDao productDao;
+	
 	private Product product =new Product();
 	private ProductVo productVo = new ProductVo();
 	@SuppressWarnings("unused")
@@ -41,6 +45,11 @@ public class ProductController {
 		productService.save(product, phone);
 		productVo = productService.get(product.getId());
 		return "/admin/product/addProductImage";
+	}
+	
+	public String editProduct(){
+		product = productDao.get(productVo.getId());
+		return "/admin/product/addProduct";
 	}
 	
 	public Product getProduct() {

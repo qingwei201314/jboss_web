@@ -42,13 +42,19 @@
 				</div>
 			</div>
 			<div class="actions" style="padding-left: 360px;height:31px;">
-				<div style="float: left;"><h:commandButton class="btn primary" action="#{productController.saveProduct}" value="编辑以上信息" /></div>
+				<h:inputHidden value="#{productController.productVo.id}" />
+				<div style="float: left;"><h:commandButton class="btn primary" action="#{productController.editProduct}" value="编辑以上信息" /></div>
 				<div style="float: left;margin-left: 10px;"><input type="file" name="file_upload" id="file_upload" /></div>
 				<div style="float: right;">
 					<h:inputHidden value="#{productController.productVo.category_id}" />
 					<h:commandButton class="btn primary" action="#{productController.addProduct(null)}" value="添加新产品" />
 				</div>
-				
+				<!-- 图片上传后调用ajax -->
+				<h:inputHidden value="#{imageController.product_id}" id="product_id" />
+				<h:inputHidden value="#{imageController.url}" id="url" />
+				<h:commandButton id="ajaxButton" action="#{imageController.saveImage}" style="display:none" >
+					<f:ajax />
+				</h:commandButton>
 			</div>
 		</h:form>
 		<div class="row">
@@ -70,65 +76,26 @@
 				</p>
 			</div>
 		</div>
-		<div class="row">
-			<div class="span-one-third-product-img">
-				<p>
-					<a href="canteen/viewCanteen.html"><img class="product"
-						src="../../img/kocla/kocla.jpg" />
-					</a>
-				</p>
-			</div>
-			<div class="span-one-third-product-img">
-				<p>
-					<img class="product" src="../../img/kocla/kocla.jpg" />
-				</p>
-			</div>
-			<div class="span-one-third-product-img">
-				<p>
-					<img class="product" src="../../img/kocla/kocla.jpg" />
-				</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="span-one-third-product-img">
-				<p>
-					<a href="canteen/viewCanteen.html"><img class="product"
-						src="../../img/kocla/kocla.jpg" />
-					</a>
-				</p>
-			</div>
-			<div class="span-one-third-product-img">
-				<p>
-					<img class="product" src="../../img/kocla/kocla.jpg" />
-				</p>
-			</div>
-			<div class="span-one-third-product-img">
-				<p>
-					<img class="product" src="../../img/kocla/kocla.jpg" />
-				</p>
-			</div>
-		</div>
+
 	</ui:define>
 	<ui:define name="js">
 		$("#product").attr("class","active");
 		
 			$(function() {
-			  var width = '580';
-			  var height = '290';
 			  var phone = '#{phone}';
-			  var jspPaht = '#{util.uploadProject}/uploadify/uploadifyGate.jsp?phone=#{phone}&amp;width='+width +'&amp;height='+ height;
+			  var jspPath = '#{util.uploadProject}/uploadify/uploadifyGate.jsp?phone=#{phone}&amp;widthXheight=580x290_20x20';
 		      $('#file_upload').uploadify({
 		         'swf'      : '#{util.uploadProject}/uploadify/uploadify.swf',
-		         'uploader' : jspPaht,
+		         'uploader' : jspPath,
 		         'buttonText' : '上传图片', 
 		         'width'    :  '52px',
 		         'height'   :  '18px',
 		         'fileTypeExts' : '*.gif; *.jpg; *.png',
 		         'onUploadSuccess' : function(file, data, response) {
-		         	var path = "#{util.uploadProject}#{util.repository}" + data;
-		        	$("#gatePhone").show();
-		        	$("#gatePhone").attr("src", path); 
-		        	$("#j_idt9\\:gate_url").val(data);
+		         	var c = data.split(",");
+		         	alert(c.length);
+			    	alert(c[0]);
+			    	alert(c[1]);
 		          },
 		         'buttonClass' : 'btn info'
 		      });

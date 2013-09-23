@@ -1,0 +1,28 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="#{util.path}/template/manage.xhtml">
+	<ui:define name="container">
+		<h:form>
+			<div class="row" id="photos">
+				<div id="photoItem" class="span-one-third" style="display: none">
+					<p>
+						<a href="canteen/viewCanteen.html"><img class="product" src="" />
+						</a>
+					</p>
+					<input type="hidden" />
+				</div>
+			</div>
+			<div class="actions" style="padding-left: 360px;height:31px;">
+				<h:inputHidden value="#{productController.productVo.id}" />
+				<div style="float: left;"><h:commandButton class="btn primary" action="#{productController.editProduct}" value="编辑以上信息" /></div>
+				<div style="float: left;margin-left: 10px;"><input type="file" name="file_upload" id="file_upload" /></div>
+				<div style="float: right;">
+					<h:inputHidden value="#{productController.productVo.category_id}" />
+					<h:commandButton class="btn primary" action="#{productController.addProduct(null)}" value="添加新产品" />
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>
