@@ -12,11 +12,15 @@ public class Image {
 	@GeneratedValue(generator = "generator")	
 	private String id;
 	private String product_id;
-	private String url;
+	private String path;
+	private String postfix;
 	
-	public Image(String product_id, String url){
+	public Image(){
+	}
+	
+	public Image(String product_id, String path){
 		this.product_id = product_id;
-		this.url = url;
+		this.path = path;
 	}
 	
 	public String getId() {
@@ -31,10 +35,17 @@ public class Image {
 	public void setProduct_id(String product_id) {
 		this.product_id = product_id;
 	}
-	public String getUrl() {
-		return url;
+	public String getPostfix() {
+		return postfix;
 	}
-	public void setUrl(String url) {
-		this.url = url;
+	public void setPostfix(String postfix) {
+		this.postfix = postfix;
+	}
+
+	public String getPath() {
+		return path;
+	}
+	public void setPath(String path) {
+		this.path = path;
 	}
 }

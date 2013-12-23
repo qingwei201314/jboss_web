@@ -3,6 +3,7 @@ package com.kevin.shop.controller;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
@@ -35,10 +36,17 @@ public class ShopController {
 	private static final Integer noChoice = -1; //页面请选择项的值
 	
 	public String saveShop() throws IllegalAccessException, InvocationTargetException{
+		String result = "/admin/category/addCategory";
 		HttpSession session = ((HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest()).getSession();
 		String phone = (String)session.getAttribute(Constant.phone);
-		shop = shopService.dealShop(shop, phone, city);
-		return "/admin/category/addCategory";
+		if(this.city == 0){
+			FacesContext context = FacesContext.getCurrentInstance(); 
+			context.addMessage(null, new FacesMessage("地址不能为空!"));
+			result= "/admin/shop/addShop";
+		}else{
+			shop = shopService.dealShop(shop, phone, city);
+		}
+		return result;
 	}
 	
 	/**
@@ -56,12 +64,22 @@ public class ShopController {
 	public Shop getShop() {
 		HttpSession session = ((HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest()).getSession();
 		String phone = (String)session.getAttribute(Constant.phone);
-		shop = shopDao.getByPhone(phone);
-		CityVo cityVo = cityService.getByShopDistrict(shop.getDistrict());
-		this.province = cityVo.getProvince();
-		this.town = cityVo.getTown();
-		this.city = cityVo.getCity();
-		cityList = shopService.getTown(town);
+		if(shop == null ||shop.getId() == null)
+			shop = shopDao.getByPhone(phone);
+		if(shop !=null){
+			CityVo cityVo = cityService.getByShopDistrict(shop.getDistrict());
+			this.province = cityVo.getProvince();
+			this.town = cityVo.getTown();
+			this.city = cityVo.getCity();
+			cityList = shopService.getTown(town);
+			//控制页面是否显示图片
+			if(shop.getGate_url()==null)
+				shop.setGate_url("none");
+		}
+		else{
+			shop = new Shop();
+			shop.setGate_url("none");
+		}
 		return shop;
 	}
 

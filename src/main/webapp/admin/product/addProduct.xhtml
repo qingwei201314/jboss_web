@@ -7,6 +7,9 @@
 		<link href="../css/shop/shop.css" rel="stylesheet" />
 		<link href="#{util.path}/uploadify/uploadify.css" rel="stylesheet" type="text/css" />
 		<script type="text/javascript" src="#{util.path}/uploadify/jquery.uploadify.min.js" />
+		<script type="text/javascript" src="#{util.path}/ueditor/ueditor.config.js"></script>
+		<script type="text/javascript" src="#{util.path}/ueditor/ueditor.all.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="#{util.path}/ueditor/lang/zh-cn/zh-cn.js"></script>
 	</ui:define>
 	<ui:define name="container">
 		<h:form>
@@ -25,26 +28,20 @@
 					<div class="div_margin">
 						<h:inputText value="#{productController.product.name}" size="30"
 							class="xlarge" />
+						<h:inputHidden value="#{productController.product.id}" />
 					</div>
 				</div>
 				<div class="clearfix">
 					<label for="xlInput" class="label_width">描述</label>
 					<div class="div_margin">
-						<h:inputText value="#{productController.product.description}"
-							size="30" class="xlarge" />
+					</div>
+				</div>
+				<div class="clearfix">
+					<div style="margin: auto;width: 800px;">
+						<script id="myEditor" name="description"  type="text/plain" style="width:800px;height:240px;">#{productController.product.description}</script>
 					</div>
 				</div>
 			</fieldset>
-			<div class="row" id="photos" >
-				<div id="photoItem" class="span-one-third" style="display: none">
-					<p>
-						<a href="canteen/viewCanteen.html"><img class="product"
-							src="" />
-						</a>
-					</p>
-					<input type="hidden" />
-				</div>
-			</div>
 			<div class="actions" style="padding-left: 360px;">
 				<h:commandButton class="btn primary" action="#{productController.saveProduct}" value="保存" />
 			</div>
@@ -53,5 +50,6 @@
 	
 	<ui:define name="js">
 		$("#product").attr("class","active");
+		UE.getEditor('myEditor')
 	</ui:define>
 </ui:composition>

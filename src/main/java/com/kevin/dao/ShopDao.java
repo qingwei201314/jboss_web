@@ -5,6 +5,7 @@ import javax.inject.Inject;
 
 import com.kevin.entity.Shop;
 import com.kevin.entity.User;
+import com.kevin.util.Util;
 
 @Stateless
 public class ShopDao extends CommonDao<Shop>{
@@ -13,6 +14,7 @@ public class ShopDao extends CommonDao<Shop>{
 	
 	public Shop getByPhone(String phone){
 		User user = userDao.query("phone", phone);
+		Shop shop =user.getShop();
 		return user.getShop();
 	}
 }

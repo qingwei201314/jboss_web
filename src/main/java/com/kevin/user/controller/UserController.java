@@ -1,6 +1,7 @@
 package com.kevin.user.controller;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -32,6 +33,10 @@ public class UserController {
 			resultPath = "/admin/shop/addShop";
 			HttpSession session = ((HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest()).getSession();
 			session.setAttribute(Constant.phone, user.getPhone());
+		}
+		else{
+			FacesContext context = FacesContext.getCurrentInstance(); 
+			context.addMessage(null, new FacesMessage("电话或密码错误!"));
 		}
 		return resultPath;
 	}

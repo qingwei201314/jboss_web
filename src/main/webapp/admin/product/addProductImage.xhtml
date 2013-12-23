@@ -14,7 +14,7 @@
 		<h:form>
 			<fieldset>
 			<div style="width: 500px;margin:0 auto;">
-				<table class="bordered-table zebra-striped">
+				<table class="bordered-table zebra-striped table_width_93">
 					<tbody>
 						<tr>
 							<td>类别</td>
@@ -24,9 +24,19 @@
 							<td>名称</td>
 							<td>#{productController.productVo.name}</td>
 						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div style="width: 800px;margin:0 auto;">
+				<table class="bordered-table zebra-striped table_width_93">
+					<tbody>
 						<tr>
-							<td>描述</td>
-							<td>#{productController.productVo.description}</td>
+							<td>描述：</td>
+						</tr>
+						<tr>
+							<td>
+								<h:outputText value="#{productController.productVo.description}" escape="false" />
+							</td>
 						</tr>
 					</tbody>
 				</table>
@@ -45,57 +55,63 @@
 				<h:inputHidden value="#{productController.productVo.id}" />
 				<div style="float: left;"><h:commandButton class="btn primary" action="#{productController.editProduct}" value="编辑以上信息" /></div>
 				<div style="float: left;margin-left: 10px;"><input type="file" name="file_upload" id="file_upload" /></div>
-				<div style="float: right;">
+				<div style="float: right;z-index: 10">
 					<h:inputHidden value="#{productController.productVo.category_id}" />
 					<h:commandButton class="btn primary" action="#{productController.addProduct(null)}" value="添加新产品" />
 				</div>
-				<!-- 图片上传后调用ajax -->
-				<h:inputHidden value="#{imageController.product_id}" id="product_id" />
-				<h:inputHidden value="#{imageController.url}" id="url" />
-				<h:commandButton id="ajaxButton" action="#{imageController.saveImage}" style="display:none" >
-					<f:ajax />
-				</h:commandButton>
 			</div>
 		</h:form>
-		<div class="row">
-			<div class="span-one-third-product-img">
-				<p>
-					<a href="canteen/viewCanteen.html"><img class="product"
-						src="../../img/kocla/kocla.jpg" />
-					</a>
-				</p>
+		<div class="row" id="displayContent">
+			<div id="template" style="display: none;">
+				<div class="span-one-third-product-img">
+					<p>
+						<img class="product" src="photosrc" />
+					</p>
+				</div>
 			</div>
-			<div class="span-one-third-product-img">
-				<p>
-					<img class="product" src="../../img/kocla/kocla.jpg" />
-				</p>
-			</div>
-			<div class="span-one-third-product-img">
-				<p>
-					<img class="product" src="../../img/kocla/kocla.jpg" />
-				</p>
-			</div>
+			<ui:repeat var="image" value="#{productController.productVo.imageList}">
+				<div class="span-one-third-product-img">
+					<p>
+						<img class="product" src="#{util.staticProject}#{util.repository}#{image.path}_220x165#{image.postfix}" />
+					</p>
+				</div>
+			</ui:repeat>
 		</div>
 
 	</ui:define>
 	<ui:define name="js">
-		$("#product").attr("class","active");
+		$("#image").attr("class","active");
 		
 			$(function() {
 			  var phone = '#{phone}';
-			  var jspPath = '#{util.uploadProject}/uploadify/uploadifyGate.jsp?phone=#{phone}&amp;widthXheight=580x290_20x20';
+			  var jspPath = '#{util.uploadProject}/uploadify/uploadifyGate.jsf?phone=#{phone}&amp;widthXheight=800x600_220x165';
 		      $('#file_upload').uploadify({
 		         'swf'      : '#{util.uploadProject}/uploadify/uploadify.swf',
 		         'uploader' : jspPath,
 		         'buttonText' : '上传图片', 
-		         'width'    :  '52px',
-		         'height'   :  '18px',
+		         'width'    :  '90px',
+		         'height'   :  '28px',
 		         'fileTypeExts' : '*.gif; *.jpg; *.png',
 		         'onUploadSuccess' : function(file, data, response) {
-		         	var c = data.split(",");
-		         	alert(c.length);
-			    	alert(c[0]);
-			    	alert(c[1]);
+		         	var start =data.indexOf("result.");
+					var end =data.indexOf(".result");
+					data = data.substring(start+7, end);
+		         	$.ajax({
+						url: "#{util.path}/admin/product/saveProductImage.jsf",
+						data: {
+							product_id: "#{productController.productVo.id}",
+							url:        data
+						},
+						success: function( data ) {
+							var start =data.indexOf("result.");
+							var end =data.indexOf(".result");
+							var result = data.substring(start+7, end);
+							var content = $("#template").html();
+							var photosrc = "#{util.staticProject}#{util.repository}" + result;
+							content = content.replace("photosrc", photosrc);
+							$("#displayContent").append(content);
+						}
+					});
 		          },
 		         'buttonClass' : 'btn info'
 		      });

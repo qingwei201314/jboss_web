@@ -207,6 +207,11 @@
         	<artifactId>axis</artifactId>
         	<version>1.4</version>
         </dependency>
+        <dependency>
+        	<groupId>dom4j</groupId>
+        	<artifactId>dom4j-core</artifactId>
+        	<version>1.4-dev-8</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -9,6 +9,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 	margin-bottom: 1em;
 }
 .uploadify-button {
+	width: 60px;
 }
 .uploadify:hover .uploadify-button {
 }
@@ -16,6 +17,8 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 }
 .uploadify-queue {
 	margin-bottom: 1em;
+	z-index: 1;
+	position: absolute;
 }
 .uploadify-queue-item {
 	background-color: #F5F5F5;

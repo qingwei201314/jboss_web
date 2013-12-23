@@ -2,6 +2,7 @@
 <root>
 	<path>http://localhost:8079/jboss_web</path>
 	<uploadProject>http://localhost:8079/upload</uploadProject>
-	<upload>D:/jboss-as-7.1.1.Final/standalone/deployments/jboss_web.war/repository</upload>
+	<upload>D:/jboss-as-7.1.1.Final/welcome-content/repository</upload>
+	<staticProject>http://localhost:8079</staticProject>
 	<repository>/repository</repository>
 </root>

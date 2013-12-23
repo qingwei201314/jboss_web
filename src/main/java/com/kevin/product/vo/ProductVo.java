@@ -1,5 +1,9 @@
 package com.kevin.product.vo;
 
+import java.util.List;
+
+import com.kevin.entity.Image;
+
 public class ProductVo {
 	private String id;
 	private String name;
@@ -7,6 +11,7 @@ public class ProductVo {
 	private String shop_id;
 	private String category_id;
 	private String categoryName;
+	private List<Image> imageList;
 	
 	public String getId() {
 		return id;
@@ -43,5 +48,11 @@ public class ProductVo {
 	}
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
+	}
+	public List<Image> getImageList() {
+		return imageList;
+	}
+	public void setImageList(List<Image> imageList) {
+		this.imageList = imageList;
 	}
 }

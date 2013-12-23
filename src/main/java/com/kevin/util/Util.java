@@ -22,6 +22,8 @@ public class Util {
 	private static String upload;
 	//存放图片的工程路径
 	private static String repository;
+	//静态工程路径 
+	private static String staticProject;
 
 	public Util() throws DocumentException {
 		if (document == null) {
@@ -34,6 +36,7 @@ public class Util {
 		uploadProject = document.selectSingleNode("//root//uploadProject").getStringValue();
 		upload = document.selectSingleNode("//root//upload").getStringValue();
 		repository = document.selectSingleNode("//root//repository").getStringValue();
+		staticProject = document.selectSingleNode("//root//staticProject").getStringValue();
 	}
 
 	public String getPath() {
@@ -66,5 +69,13 @@ public class Util {
 	
 	public static String uploadProject() {
 		return uploadProject;
+	}
+	
+	public String getStaticProject() {
+		return staticProject;
+	}
+	
+	public static String staticProject() {
+		return staticProject;
 	}
 }

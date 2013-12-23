@@ -41,10 +41,14 @@ public class ShopService {
 			shop.setId(shop_db.getId());
 			BeanUtils.copyProperties(shop_db, shop);
 		}
-		shop_db.setId(shop_db.getId());
 		shop_db.setUser_id(user.getId());
 		shop_db.setDistrict(city);
-		shopDao.save(shop_db);
+		if(shop_db.getId() == null){
+			shopDao.save(shop_db);
+		}
+		else{
+			shopDao.update(shop_db);
+		}
 		return shop;
 	}
 	

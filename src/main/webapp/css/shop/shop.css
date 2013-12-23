@@ -124,3 +124,7 @@
 	text-align: center;
 	margin-bottom: 19px;
 }
+
+.table_width_93 tbody > tr > td{
+	width: 15px;
+}

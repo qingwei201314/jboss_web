@@ -100,8 +100,11 @@ public abstract class CommonDao<T> {
 	public T query(String property, Object value){
 		Query query = entityManager.createQuery("from " + entityClass.getName() + " t where t." + property +"=?");
 		query.setParameter(1, value);
-		Object result = query.getSingleResult();
-		return result==null?null:(T)result;
+		List<T> result = query.getResultList();
+		T t = null;
+		if(result.size()>0)
+			t = result.get(0);
+		return t;
 	} 
 	
 	/**
