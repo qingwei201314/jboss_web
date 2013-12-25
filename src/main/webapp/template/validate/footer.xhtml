@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="#{util.path}/css/bootstrap/bootstrap.css" rel="stylesheet" />
+<link href="#{util.path}/css/main.css" rel="stylesheet" />
+<link href="#{util.path}/css/livevalidation.css" rel="stylesheet" />
+<script type="text/javascript" src="#{util.path}/js/jquery-1.8.3.min.js" />
+<script type="text/javascript" src="#{util.path}/js/livevalidation_standalone.js" />
+<script type="text/javascript" src="#{util.path}/js/bootstrap/bootstrap-alerts.js" />
+<ui:insert name="head"></ui:insert>
+</h:head>
+<h:body style="padding-top: 60px;">
+	<ui:insert name="topbar"></ui:insert>
+	<div class="container">
+		<!-- 错误提示页面 start -->
+		<div class="alert-message block-message error fade in" style="display: none;" data-alert="alert" >
+            <a class="close" href="#">&#215;</a>
+            <div style="text-align: center;"><h:messages id="message" class="message"/></div>
+        </div>
+        <!-- 错误提示页面 end -->
+		<ui:insert name="container"></ui:insert>
+		<footer>
+		<p>© ----------- 2013</p>
+		</footer>
+	</div>
+	<script type="text/javascript">
+		var alertMessage = $(".alert-message");
+		var message = $("#message");
+		if(message.html() != ''){
+			alertMessage.show();
+			alertMessage.alert();
+		}
+		<ui:insert name="js"></ui:insert>
+	</script>
+	<script type="text/javascript" src="#{util.path}/js/jsf.js" />
+	<script type="text/javascript" src="#{util.path}/js/jsf-uncompressed.js" />
+</h:body>
+</html>
