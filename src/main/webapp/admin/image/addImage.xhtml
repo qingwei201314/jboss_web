@@ -1,0 +1,55 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="#{util.path}/template/manage.xhtml">
+	<ui:define name="head">
+		<link href="../css/shop/shop.css" rel="stylesheet" />
+	</ui:define>
+	<ui:define name="container">
+		<h:form id="productListForm">
+			<fieldset>
+				<div class="clearfix">
+					<label for="xlInput" class="label_width">类别</label>
+					<div class="div_margin">
+						<h:selectOneMenu id="category" value="#{productController.category}" class="xlarge">
+							<f:selectItems value="#{productController.categoryList}" />
+							<f:ajax render="productListForm" execute="category" />
+						</h:selectOneMenu>
+					</div>
+				</div>
+				<div style="width: 500px;margin:0 auto;">
+					<table class="bordered-table zebra-striped" id="sortTableExample">
+						<thead>
+							<tr>
+								<th class="blue">产品名称</th>
+								<th class="blue">操作</th>
+							</tr>
+						</thead>
+						<tbody>
+						<ui:repeat var="product" value="#{productController.productList}">
+							<tr>
+								<td>#{product.name}</td>
+								<td>
+									<a href="#{util.path}/admin/product/addProduct.jsf?productId=#{product.id}">编辑</a>
+									<a href="#{util.path}/admin/image/addImage.jsf?deleteProductId=#{product.id}">删除</a>
+									<a href="#{util.path}/admin/product/addProductImage.jsf?productId=#{product.id}">查看</a>
+								</td>
+							</tr>
+						</ui:repeat>
+						</tbody>
+					</table>
+				</div>
+			</fieldset>
+			<div class="actions" style="padding-left: 360px;">
+			</div>
+		</h:form>
+	</ui:define>
+	
+	<ui:define name="js">
+		$("#image").attr("class","active");
+		function test(){
+			alert($("#sortTableExample").html());
+		}
+	</ui:define>
+</ui:composition>

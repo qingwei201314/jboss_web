@@ -1,0 +1,43 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="#{util.path}/template/footer.xhtml">
+	<ui:define name="topbar">
+		<div class="topbar">
+			<div class="fill">
+				<div class="container">
+					<ul class="nav">
+						<li class="active"><a href="#">用户登录</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+	<ui:define name="container">
+		<h:form>
+			<fieldset>
+				<div class="clearfix">
+					<label for="xlInput" style="width: 340px;">电话</label>
+					<div class="input" style="margin-left: 360px;">
+						<!-- <h:inputText id="phone" value="#{userController.user.phone}" size="30" maxlength="15" class="xlarge" /> -->
+						
+					</div>
+				</div>
+				<div class="clearfix">
+					<label for="xlInput" style="width: 340px;">密码</label>
+					<div class="input" style="margin-left: 360px;">
+						<h:inputSecret value="#{userController.user.password}" size="30" maxlength="32" class="xlarge" />
+					</div>
+				</div>
+				<div class="actions" style="padding-left: 360px;">
+					<h:commandButton class="btn primary"
+						action="#{userController.login}" value="登录" />
+				</div>
+			</fieldset>
+		</h:form>
+	</ui:define>
+	<ui:define name="js">
+		var f1 = new LiveValidation(’j_idt7:phone‘);
+		f1.add( Validate.Presence );
+	</ui:define>
+</ui:composition>

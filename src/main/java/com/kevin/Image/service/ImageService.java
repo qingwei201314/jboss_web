@@ -17,7 +17,7 @@ public class ImageService {
 		String path = StringUtils.substringBeforeLast(url, "_");
 		String postfix= "." + StringUtils.substringAfter(url, ".");
 		Image image = new Image(product_id,path);
-		image.setPostfix("." + postfix);
+		image.setPostfix(postfix);
 		imageDao.save(image);
 		String resut = path + Constant.S + postfix;
 		return resut;
